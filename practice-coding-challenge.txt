@@ -1,0 +1,798 @@
+// String based question
+Q1:
+a) How to reverse each word in the sentence or in a string ?
+Ans: 
+		var string = "Welcome in the world of Javascript";
+
+		// Output: tpircsavaJ fo dlrow eht ni emocleW
+		var reverseEntireSentence = reverseBySeparator(string, "");
+
+		// Output: emocleW ni eht dlrow fo tpircsavaJ 
+		var reverseEachWord = reverseBySeparator(reverseEntireSentence, " ");
+
+		function reverseBySeparator(string, separator) {
+		  return string.split(separator).reverse().join(separator);
+		}
+		
+b) how to split a string based on capital letter in javascript ?
+Ans: var name = "AbhijeetKumarMishra";
+ 
+     var result = name.split(/(?=[A-Z])/);
+     console.log(result.join(" "))
+	 
+	 output://Abhijeet Kumar Mishra
+c) How to reverse the string ?
+    var string ="Welcome to javascript"
+	function reverseString(string){
+	  return string.split(" ").reverse().join(" ")
+	}
+	reverseString(string)
+	
+	output: javascript to Welcome
+	
+	
+Q2: How to check if an object is an array or not? Provide some code.?
+Ans:
+    var arrayList = [1 , 2, 3];
+	
+	// 1st method
+	if(Object.prototype.toString.call(arrayList) === '[object Array]') {
+	  console.log('Array!');
+	}
+	// 2nd method
+	Array.isArray(arrayList);
+	
+Q3: How to empty an array in JavaScript?
+Ans: 
+    var arrayList =  ['a', 'b', 'c', 'd', 'e', 'f'];
+    //1st method
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList = []; // Empty the array
+	console.log(anotherArrayList); // Output ['a', 'b', 'c', 'd', 'e', 'f']
+	
+	//2nd method
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList.length = 0; // Empty the array by setting length to 0
+	console.log(anotherArrayList); // Output []
+	
+	//3rd method
+	arrayList.splice(0, arrayList.length);
+	
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList.splice(0, arrayList.length); // Empty the array by setting length to 0
+	console.log(anotherArrayList); // Output []
+	
+    //4th method
+	while(arrayList.length) {
+	  arrayList.pop();
+	}
+	
+Q4: How would you check if a number is an integer?
+Ans:
+    function isInt(num) {
+	  return num % 1 === 0;
+	}
+
+	console.log(isInt(4)); // true
+	console.log(isInt(12.2)); // false
+	console.log(isInt(0.3)); // false
+	
+Q5: Implement enqueue and dequeue using only two stacks?
+Ans:
+    //Enqueue means to add an element, dequeue to remove an element.
+
+	var inputStack = []; // First stack
+	var outputStack = []; // Second stack
+
+	// For enqueue, just push the item into the first stack
+	function enqueue(stackInput, item) {
+	  return stackInput.push(item);
+	}
+
+	function dequeue(stackInput, stackOutput) {
+	  // Reverse the stack such that the first element of the output stack is the
+	  // last element of the input stack. After that, pop the top of the output to
+	  // get the first element that was ever pushed into the input stack
+	  if (stackOutput.length <= 0) {
+		while(stackInput.length > 0) {
+		  var elementToOutput = stackInput.pop();
+		  stackOutput.push(elementToOutput);
+		}
+	  }
+
+	  return stackOutput.pop();
+	}
+	
+Q6: duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+Ans: function duplicate(arr) {
+	  return arr.concat(arr);
+	}
+
+	duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+	
+Q7: Write a "mul" function which will properly when invoked as below syntax ?
+    console.log(mul(2)(3)(4)); // output : 24
+    console.log(mul(4)(3)(4)); // output : 48
+Ans: function mul (x) {
+	  return function (y) { // anonymous function
+		return function (z) { // anonymous function
+		  return x * y * z;
+		};
+	  };
+	}
+	
+Q8: Write a function that would allow you to do this?
+    var addSix = createBase(6);
+	addSix(10); // returns 16
+	addSix(21); // returns 27
+	
+Ans: function createBase(baseNumber) {
+	  return function(N) {
+		// we are referencing baseNumber here even though it was declared
+		// outside of this function. Closures allow us to do this in JavaScript
+		return baseNumber + N;
+	  }
+	}
+
+	var addSix = createBase(6);
+	addSix(10);
+	addSix(21);
+	
+Q9: FizzBuzz problem using es6
+Ans: for (let i = 1; i <= 100; i++) {
+	  let f = i % 3 == 0,
+		b = i % 5 == 0;
+	  console.log(f ? (b ? 'FizzBuzz' : 'Fizz') : b ? 'Buzz' : i);
+	}
+	
+Q10: Given two strings, return true if they are anagrams of one another?
+    (a word or phrase that is made by arranging the letters of another word or phrase in a different order)
+     For example: Mary is an anagram of Army
+Ans: var firstWord = "Mary";
+	var secondWord = "Army";
+
+	isAnagram(firstWord, secondWord); // true
+
+	function isAnagram(first, second) {
+	  // For case insensitivity, change both words to lowercase.
+	  var a = first.toLowerCase();
+	  var b = second.toLowerCase();
+
+	  // Sort the strings, and join the resulting array to a string. Compare the results
+	  a = a.split("").sort().join("");
+	  b = b.split("").sort().join("");
+
+	  return a === b;
+	}
+	
+Q11: How would you use a closure to create a private counter?
+Ans: You can create a function within an outer function (a closure) that allows you to update a private variable 
+     but the variable wouldn't be accessible from outside the function without the use of a helper function.
+
+	function counter() {
+	  var _counter = 0;
+	  // return an object with several functions that allow you
+	  // to modify the private _counter variable
+	  return {
+		add: function(increment) { _counter += increment; },
+		retrieve: function() { return 'The counter is currently at: ' + _counter; }
+	  }
+	}
+
+	// error if we try to access the private variable like below
+	// _counter;
+
+	// usage of our counter function
+	var c = counter();
+	c.add(5); 
+	c.add(9); 
+
+	// now we can access the private variable in the following way
+	c.retrieve(); // => The counter is currently at: 14
+	
+Q12: What will be the output of the following code?
+    (function() {
+	  var a = b = 5;
+	})();
+
+	console.log(b);
+Ans: The code above will output 5 even though it seems as if the variable was declared within a function and can't be accessed outside of it. This is because
+
+
+Q13: Write a function that would allow you to do this?
+     multiply(5)(6);
+Ans: function multiply(a) {
+	  return function(b) {
+		return a * b;
+	  }
+	}
+
+	multiply(5)(6);
+	
+Q14: What will be the output of the following code?
+	var y = 1;
+	if (function f() {}) {
+	  y += typeof f;
+	}
+	console.log(y);
+Ans: Above code would give output 1undefined. If condition statement evaluate 
+	using eval so eval(function f() {}) which return function f() {} which is true so inside if 
+	statement code execute. typeof f return undefined because if statement code execute at run time, 
+	so statement inside if condition evaluated at run time.
+
+	var k = 1;
+	if (1) {
+	  eval(function foo() {});
+	  k += typeof foo;
+	}
+	console.log(k);
+	Above code will also output 1undefined.
+
+	var k = 1;
+	if (1) {
+	  function foo() {};
+	  k += typeof foo;
+	}
+	console.log(k); // output 1function
+
+
+Q15 . function solution(arrLen,inputArr){
+			var sortedArr=inputArr.slice().sort((a,b)=>a-b)
+			var results=[];
+			for(var i=0;i<sortedArr.length-1;i++){
+				if(sortedArr[i+1]===sortedArr[i]){
+					results.push(sortedArr[i])
+				}
+			}
+			if(results.length===0){
+			  return -1;
+			} else{
+				return results;
+			}
+	}
+	var inputArr2 = [9,9, 111, 2, 3,4,4, 5,5, 7];
+	var input2=inputArr2.length;
+	solution(input2,inputArr2)
+
+	output: [9,4,5]
+
+	var inputArr1 = [9, 111, 2, 3,4, 5, 7];
+	var input1=inputArr1.length;
+	solution(input1,inputArr1)
+
+	output -1
+Q16 . var str="Hi_anurag_how_are_you?"
+        output = "HiAnuragHowAreYou"
+        
+        Ans:
+        const convertUpperCase = (str) => {
+        let words = str.split("_");
+            let output = "";
+            words.forEach(word=>{
+                output += word[0].toUpperCase()+word.slice(1)+"";
+            })
+            return output;
+        }
+        convertUpperCase("Hi_anurag_how_are_you?");
+
+Q17. Convert the following into flat array>
+     [2,[4],[[6]],[[[8]]]]
+Ans const customFlatArr=(arr)=>{
+        let flatArr=arr.join(",").split(",")
+        let res=[];
+        for(let i=0;i<flatArr.length;i++){
+            res.push(parseInt(flatArr[i]))
+        }
+        return res;
+    }
+    customFlatArr([2,[4],[[6]],[[[8]]]]);
+    output: [2, 4, 6, 8]
+Q18. How to find the duplicate elements in an Array ?
+		var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
+		var sortedArr=arr.slice().sort();// incorrect way of sorting an array of number it is correct in case of string only
+		var sortedArr=arr.slice.sort((a,b)=>a-b)
+		var results=[];
+		for(var i=0;i<sortedArr.length-1;i++){
+			if(sortedArr[i+1]===sortedArr[i]){
+				results.push(sortedArr[i])
+			}
+		}
+		console.log(results)
+		
+		output: [4,9]
+		
+Q19. How to remove duplicate elements in an Array ?
+	        var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
+            arr=arr.sort();
+            function uniqueArray(arr){
+                return  Array.from(new Set(arr))
+            }
+			// by using ES6 syntax
+			//let uniqueArray = a => [...new Set(a)];
+            uniqueArray(arr);
+Q20. How to sort an Array of Object based on  a particular ID ?
+	    var arrObj1=[
+					  {id:1,Name:"Abhijeet"},
+					  {id:2,Name:"Saurabh"}
+                    ]
+		function compareValue(key,order ='asc'){
+				return function(a,b) {
+						if(!a.hasOwnProperty(key) || !b. hasOwnProperty(key)){
+							  //property does not exist on either object
+							  return 0;
+						}
+						
+						 const   varA =(typeof a[key]=== 'string') ? a[key].toUpperCase() : a[key];
+						 const   varB =(typeof b[key]=== 'string') ? b[key].toUpperCase() : b[key];
+						 let comparison =0;
+						 if(varA >varB ) {
+							comparison =1;
+						 } else if (varA < varB ){
+							comparison = -1;
+					     }
+					  return ((order == 'desc')   ? (comparison * -1) : comparison);
+				   } ;    
+		}
+		
+		arrObj1.sort(compareValue('Name'));
+		
+Q21. How to delete a particular element(object ) from  an array of object ?
+        :) Without using filter function:
+		 var arrObj1=[
+                      {id:1,Name:"Abhijeet"},
+					  {id:2,Name:"Saurabh"},
+					  {id:3,Name:"Muni"}
+                    ]
+
+		function comp(arr,a){
+		  let newArray=arr.slice();
+		  let newArr=[];
+			for(let i=0; i<newArray.length;i++){     
+			 if(arr[i].id!==a){
+				newArr.push(arr[i]);
+			 }
+		  }
+		  return newArr;
+		}
+
+		comp(arrObj1,1);
+        
+		:) With Filter function
+		   arrObj1.filter(ele=>{return ele.id!==2});
+		   
+Q22.  Find the  sum of numbers .
+	    case 1: Using string
+			var num = 12345;
+			var str = num.toString(); //it will convert it into a string
+			var arr = str.split(""); //it will convert it into an array
+			
+			var sum = 0;
+			for(var i = 0; i< arr.length; i++) {
+			sum = sum + parseInt(arr[i]);
+			//The parseInt() function parses a string argument   
+			//and returns an integer of the specified radix (the base in mathematical numeral system).
+			}
+			console.log(sum);
+		case 2: Using normal Math function	
+			var value = 2568,
+				sum = 0;
+
+			while (value) {
+				sum += value % 10;
+				value = Math.floor(value / 10);
+			}
+
+			console.log(sum);
+
+Q23.  How to reverse a number ?
+	    case 1:  var num = 12345;
+            var str = num.toString(); //it will convert it into a string
+            var arr = str.split(""); //it will convert it into an array
+
+			var revArr = arr.reverse();
+			console.log(revArr);
+			var string = revArr.toString();
+			console.log(string);
+			var str1 = string.replace(/,/g,"");
+			console.log(str1);
+			var num1 = parseInt(str1);
+			console.log(num1);  
+		case 2: Using join() method
+		
+		    var num = 12345;
+            var str = num.toString(); //it will convert it into a string
+            var arr = str.split(""); //it will convert it into an array
+            var revArr = arr.reverse();
+		    parseInt(revArr.join(""));
+			
+			
+Q24.  How to make first letter of every word in a string in capital ?
+			var str = "i am indian";
+			var arr = str.split(" ");
+			var arrLen = arr.length;
+
+			var newArr = [];
+			for(var i=0; i< arrLen; i++) {
+				var caps = arr[i].charAt(0).toUpperCase()+arr[i].slice(1);
+				newArr.push(caps);
+			}
+			var str1 = newArr.toString();
+			var str2 = str1.replace(/,/g, " ");
+			console.log(str2); 
+
+Q25.  you are given a string consisting of digits. Find the biggest two-digits value that is a consistent fragment of the given string.
+        For example, two-digit consistent fragment of "50552" are["50","05","55","52"], representing the numbers [50,5,55,52]. the biggest value among them is 55.		
+    Ans:  
+    case 1:
+        function getMax(s)
+		{
+			var max = 0;
+			for (var i = 1; i < s.length; i++)
+			{
+				var current = (s[i - 1] - '0') * 10 + (s[i] - '0');
+				if (current > max)
+					max = current;
+			}
+			return max;
+		}
+    case2:
+        function solution(s){
+			let output=[];
+			for(let i=0;i<s.length-1;i++){
+				let str=s.substring(i,i+2);
+				console.log(str)
+				output.push(Number(str))
+			}
+			return output.sort((a,b)=>a-b)[output.length-1];
+		}
+		solution("50552")		
+Q26.  Given string s consisting of n characters returns alphabetically smallest string that can be obtained by removing exactly one letter from s
+	    Examples: 
+
+		Input: str = "abcda"  
+		Output: abca
+		One can remove 'd' to get "abca" which is 
+		the lexicographically smallest string possible. 
+
+		Input: str = "aaa' 
+		Output: aa
+	Ans:
+    case1:
+    function smallest(s)
+		{
+			let l = s.length;
+			let ans = "";
+	  
+			// iterate the String
+			for (let i = 0; i < l-1; i++)
+			{
+	  
+				// first point where s[i]>s[i+1]
+				if (s[i] > s[i+1]) {
+	  
+					// append the String without
+					// i-th character in it
+					for (let j = 0; j < l; j++) {
+						if (i != j) {
+							ans += s[j];
+						}
+					}
+					return ans;
+				}
+			}
+	  
+			// leave the last character
+			ans = s.substring(0, l - 1);
+			return ans;
+		}
+		
+		case2:
+		function solution2(s){
+			let output=[];
+			for(let i=0;i<s.length;i++){
+				let str = s.replace(s[i],"")
+				console.log(str)
+				output.push(str)
+			}
+			return output.sort()[0]
+		}
+	    solution2("acb")
+Q27. Custom JS function .
+   
+    A). Write your own map function:
+        ----------------------------
+    let arr =[1,2,3,4,5];
+
+	let square = arr.map((currentItem,index,arrReference)=>{
+		return currentItem **2;
+	});
+
+	function map(arr,mapFunction){
+		let mapArr = [];
+		for(let i =0;i< arr.length;i++){
+		  const result = mapFunction(arr[i],i,arr);
+		  mapArr.push(result);+/
+		}
+		return mapArr;
+	}
+
+	let square = map(arr,function(currentItem,index,arrReference){
+		return currentItem ** 2;
+	});
+
+	console.log(square);
+
+	B) Write your own filter function:
+	   -------------------------------
+	let arr =[1,2,3,4,5];
+
+	let square = arr.filter((currentItem,index,arrReference)=>{
+		return currentItem %2 == 0;
+	});
+	  
+	function filter(arr,mapFunction){
+		let mapArr = [];
+		for(let i =0;i< arr.length;i++){
+		  const result = mapFunction(arr[i],i,arr);
+		  if(result){
+			mapArr.push(result);
+		  }
+		}
+		result mapArr;
+	}
+
+	let square = map(arr,function(currentItem,index,arrReference){
+		return currentItem % 2 == 0;
+	});
+
+	console.log(square);
+
+	C) Write your own reducer function:
+	   --------------------------------
+	let arr = [1, 2, 3, 4];
+	const sumReducer = (accumulator, currentValue) => accumulator + currentValue;
+	const sum = arr.reduce(sumReducer);
+	console.log(sum);
+
+	// reducer takes an array, reducer() and initialValue as argument
+	function reduce(arr, reducer, initialValue) {    
+		let accumulator = initialValue === undefined ? 0 : initialValue        
+		// loop though array    
+		for(let i=0;i<arr.length;i++)        
+			accumulator = reducer(accumulator, arr[i], i, arr);    
+		return accumulator;
+	}
+	const Nsum = reduce(arr, sumReducer);
+
+Output based question:
+Q1. What is the output of the following?
+	let t=5;
+	function inner(){
+		console.log("first console t val ",t++)
+
+		setTimeout(()=>{
+		  console.log("setTimeout console t val ",t++)
+		},1000)
+
+		let p = new Promise(function(resolve, reject) {
+		  resolve("done");
+		});
+	   
+		p.then((data)=>console.log("promise console t val ",t++))
+
+		console.log("last console t val ",t++)
+	}
+
+	inner();
+    output : first console t val  5
+	         last console t val  6
+			 promise console t val  7
+			 setTimeout console t val  8
+			 
+Q2. What is the output of the following?
+    let t=5;
+	function inner(){
+		console.log("first console t val ",++t)
+
+		setTimeout(()=>{
+		  console.log("setTimeout console t val ",++t)
+		},1000)
+
+		let p = new Promise(function(resolve, reject) {
+		  resolve("done");
+		});
+	   
+		p.then((data)=>console.log("promise console t val ",++t))
+
+		console.log("last console t val ",++t)
+	}
+
+	inner();
+	output: first console t val  6
+	        last console t val  7
+			promise console t val  8
+			setTimeout console t val  9
+Q3. Whaat is the output of the following?
+     (function(){
+		var a=b=10;
+	})()
+	console.log(a);
+	console.log(b);
+	output: Uncaught ReferenceError: a is not defined
+
+What is promise ?
+    A Promise is a proxy for a value not necessarily known when the promise is created. 
+	It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. 
+	This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, 
+	the asynchronous method returns a promise to supply the value at some point in the future.
+
+	A Promise is in one of these states:
+
+	pending: initial state, neither fulfilled nor rejected.
+	fulfilled: meaning that the operation was completed successfully.
+	rejected: meaning that the operation failed.
+	
+	The eventual state of a pending promise can either be fulfilled with a value or rejected with a reason (error). 
+	When either of these options occur, the associated handlers queued up by a promise's then method are called. 
+	If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+	A promise is said to be settled if it is either fulfilled or rejected, but not pending.
+
+Q2. What is the output?
+    const promiseA = new Promise((resolve, reject) => {
+      resolve(777);
+	});
+	// At this point, "promiseA" is already settled.
+	promiseA.then((val) => console.log("asynchronous logging has val:", val));
+	console.log("immediate logging");
+	
+	// produces output in this order:
+	// immediate logging
+	// asynchronous logging has val: 777
+	
+Difference between let, const and var ?
+    1.) JavaScript var keyword: The var is the oldest keyword to declare a variable in JavaScript. 
+        Scope: Global scoped or function scoped. The scope of the var keyword is the global or function scope. 
+		It means variables defined outside the function can be accessed globally, and variables defined inside a particular function can be accessed within the function. 
+	    Examp1e 1:
+		var a = 10
+        function f(){
+            console.log(a)
+        }
+		f();
+		console.log(a);
+		
+		output:10
+               10
+	
+        Example 2:
+		function f() {
+        // It can be accessible any
+        // where within this function
+			var a = 10;
+			console.log(a)
+		}
+		f();
+	 
+		// A cannot be accessible
+		// outside of function
+		console.log(a);
+		
+		output: 10
+                ReferenceError: a is not defined
+				
+		Example 3: The user can re-declare the variable using var and the user can update var variable.
+		var a = 10
+   
+		// User can re-declare
+		// variable using var
+		var a = 8
+	 
+		// User can update var variable
+		a = 7
+		
+		output: 7
+		
+		Example 4: If users use the var variable before the declaration, it initializes with the undefined value.
+		
+		console.log(a);
+        var a = 10;
+		output: undefined
+		
+	2.) JavaScript let keyword: The let keyword is an improved version of the var keyword. 
+	    Scope: block scoped: The scope of a let variable is only block scoped. It can’t be accessible outside the particular block ({block}). Let’s see the below example.
+
+		Example 1: 
+        let a = 10;
+		function f() {
+				let b = 9
+				console.log(b);
+				console.log(a);
+		}
+		f();
+		Output:
+
+		9
+		10
+		
+		Example 2: The code returns an error because we are accessing the let variable outside the function block.
+        let a = 10;
+		function f() {
+			if (true) {
+				let b = 9
+	 
+				// It prints 9
+				console.log(b);
+			}
+	 
+			// It gives error as it
+			// defined in if block
+			console.log(b);
+		}
+		f()
+	 
+		// It prints 10
+		console.log(a)
+		Output:
+			9
+			ReferenceError: b is not defined
+			
+		Example 3: Users cannot re-declare the variable defined with the let keyword but can update it.
+		let a = 10
+	 
+		// It is not allowed
+		let a = 10
+	 
+		// It is allowed
+		a = 10
+		Output:
+        Uncaught SyntaxError: Identifier 'a' has already been declared
+
+       Example 4: Users can declare the variable with the same name in different blocks using the let keyword.
+       let a = 10
+	   if (true) {
+		let a=9
+		console.log(a) // It prints 9
+	   }
+	   console.log(a) // It prints 10
+	   Output: 9 
+	           10
+	    Example 5: If users use the let variable before the declaration, it does not initialize with undefined just like a var variable, and returns an error.
+        console.log(a);
+		let a = 10;
+	    Output:
+        Uncaught ReferenceError: Cannot access 'a' before initialization
+    3.) const keyword in JavaScript: The const keyword has all the properties that are the same as the let keyword, except the user cannot update it.
+ 
+        Scope: block scoped: When users declare a const variable, they need to initialize it, otherwise, it returns an error. The user cannot update the const variable once it is declared. 
+
+        Example 1: We are changing the value of the const variable so that it returns an error.
+		const a = 10;
+		function f() {
+			a = 9
+			console.log(a)
+		}
+		f();
+		Output:
+        TypeError:Assignment to constant variable.
+        Example 2: Users cannot change the properties of the const object, but they can change the value of the properties of the const object.
+		const a = {
+			prop1: 10,
+			prop2: 9
+		}
+		 
+		// It is allowed
+		a.prop1 = 3
+	 
+		// It is not allowed
+		a = {
+			b: 10,
+			prop2: 9
+		}
+		Output:
+		Uncaught SyntaxError:Unexpected identifier
+		
+		
