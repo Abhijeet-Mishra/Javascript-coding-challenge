@@ -29,7 +29,162 @@ c) How to reverse the string ?
 	reverseString(string)
 	
 	output: javascript to Welcome
+d) // var revWords=(str)=>{
+//   let res='';
+// console.log(str.split(" "))
+//   str.split(" ").forEach((s)=>{
+//     console.log(s)
+//     for(let i=s.length-1;i>=0;i--){
+//       res+=s[i];
+//     }
+//     res+=" ";
+//   })
+//   return res
+// }
+// console.log(revWords("hello world"))
+
+// Input - "hello world"
+// Output - "olleh dlrow"
+
+var str1 = "hello world";
+
+//By using reverse method
+// console.log(str1.split("").reverse().join(""));
+
+// Without using reverse method
+let output=""
+var revStr=str1.split("");
+var revArr=[];
+var newArr=[];
+for(var i=1;i<=revStr.length;i++){
+  revArr.push(revStr[revStr.length-i]);
+}
+console.log(revArr.join(""))
+let newA=revArr.join("").split(" ");
+for(let i=newA.length-1;i>=0;i--){
+  if(i>0){
+     output+=newA[i]+" ";
+  }
+  else{
+     output+=newA[i];
+  }
+ 
+}
+console.log(output);
+Q2:
+  a)Write a function concat which gives same output as "Hello world"
+    concat("Hello","world"); //"Hello world"
+	concat("Hello")("world"); //"Hello world"
+  Ans: 
+    function concat(a,b){
+	 if(b){
+	   return a+" "+b;
+	 }
+	 return function(b){
+		   return a +" "+b;
+	  }
+	}
+
+	console.log(concat("Hello")("world"))
+	console.log(concat("Hello","world"))
 	
+Q2: Find the largest pair sum in an unsorted array
+Ans: 
+   function sum(arr)
+    {
+        var fLarge, sLarge;
+        if (arr[0] > arr[1])
+        {
+            fLarge = arr[0];
+            sLarge = arr[1];
+        }
+        else
+        {
+            fLarge = arr[1];
+            sLarge = arr[0];
+        }
+       
+        for (var i = 2; i < arr.length; i ++)
+        {
+            if (arr[i] > fLarge)
+            {
+                sLarge = fLarge;
+                fLarge = arr[i];
+            }
+            else if (arr[i] > sLarge){
+              if(arr[i] != fLarge){
+                sLarge = arr[i];
+              }
+            }
+        }
+        return (fLarge + sLarge);
+    }
+       
+    var arr1 = [12, 34, 10, 6, 40];
+    console.log(sum(arr1));
+Q2: //Selection sort
+	function swap(arr,xp, yp)
+	{
+		var temp = arr[xp];
+		arr[xp] = arr[yp];
+		arr[yp] = temp;
+	}
+	 
+	function selectionSort(arr,  n)
+	{
+		var i, j, min_idx;
+	 
+		// One by one move boundary of unsorted subarray
+		for (i = 0; i < n-1; i++)
+		{
+			// Find the minimum element in unsorted array
+			min_idx = i;
+			for (j = i + 1; j < n; j++)
+			if (arr[j] < arr[min_idx])
+				min_idx = j;
+	 
+			// Swap the found minimum element with the first element
+			swap(arr,min_idx, i);
+		}
+		return arr
+	}
+	 
+
+	var arr = [64, 25, 22,19,12, 22, 11];
+		var n = 7;
+	    console.log("Selection sort is: ",selectionSort(arr, n))
+
+Q2: //Bubble Sort
+	function swap(arr, xp, yp)
+	{
+		var temp = arr[xp];
+		arr[xp] = arr[yp];
+		arr[yp] = temp;
+	}
+	 
+	// An optimized version of Bubble Sort
+	function bubbleSort( arr, n)
+	{
+	  var i, j;
+	  for (i = 0; i < n-1; i++)
+	  {
+		for (j = 0; j < n-i-1; j++)
+		{
+			if (arr[j] > arr[j+1])
+			{
+			 swap(arr,j,j+1);
+			}
+		 }
+	   }
+	   return arr;
+	}
+
+    // Driver program to test above functions
+    var arr = [5, 1, 4, 2, 8];
+    var n = 5;
+    bubbleSort(arr, n);
+    console.log("Bubble sort is: ",bubbleSort(arr, n))
+
 	
 Q2: How to check if an object is an array or not? Provide some code.?
 Ans:
@@ -200,6 +355,12 @@ Q12: What will be the output of the following code?
 
 	console.log(b);
 Ans: The code above will output 5 even though it seems as if the variable was declared within a function and can't be accessed outside of it. This is because
+     var a = b = 5;
+     is interpreted the following way:
+
+	var a = b;
+	b = 5;
+	But b is not declared anywhere in the function with var so it is set equal to 5 in the global scope.
 
 
 Q13: Write a function that would allow you to do this?
