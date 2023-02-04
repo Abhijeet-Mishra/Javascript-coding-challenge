@@ -22,6 +22,7 @@ Ans: var name = "AbhijeetKumarMishra";
 	 
 	 output://Abhijeet Kumar Mishra
 c) How to reverse the string ?
+Ans:
     var string ="Welcome to javascript"
 	function reverseString(string){
 	  return string.split(" ").reverse().join(" ")
@@ -29,53 +30,83 @@ c) How to reverse the string ?
 	reverseString(string)
 	
 	output: javascript to Welcome
-d) // var revWords=(str)=>{
-//   let res='';
-// console.log(str.split(" "))
-//   str.split(" ").forEach((s)=>{
-//     console.log(s)
-//     for(let i=s.length-1;i>=0;i--){
-//       res+=s[i];
-//     }
-//     res+=" ";
-//   })
-//   return res
-// }
-// console.log(revWords("hello world"))
+d) Input - "hello world"
+   Output - "olleh dlrow"
+Ans:   
+    case 1: By using reverse method
+     console.log(str1.split("").reverse().join(""));
+	 
+    case 2: Without using reverse method
+     var revWords=(str)=>{
+      let res='';
+      console.log(str.split(" "))
+		str.split(" ").forEach((s)=>{
+		console.log(s)
+		for(let i=s.length-1;i>=0;i--){
+		  res+=s[i];
+		}
+		res+=" ";
+      })
+      return res
+    }
+    console.log(revWords("hello world"))
 
-// Input - "hello world"
-// Output - "olleh dlrow"
+    case 3: Without using reverse method
+	let output=""
+	var revStr=str1.split("");
+	var revArr=[];
+	var newArr=[];
+	for(var i=1;i<=revStr.length;i++){
+	  revArr.push(revStr[revStr.length-i]);
+	}
+	console.log(revArr.join(""))
+	let newA=revArr.join("").split(" ");
+	for(let i=newA.length-1;i>=0;i--){
+	  if(i>0){
+		 output+=newA[i]+" ";
+	  }
+	  else{
+		 output+=newA[i];
+	  }
+	 
+	}
+	console.log(output);
 
-var str1 = "hello world";
-
-//By using reverse method
-// console.log(str1.split("").reverse().join(""));
-
-// Without using reverse method
-let output=""
-var revStr=str1.split("");
-var revArr=[];
-var newArr=[];
-for(var i=1;i<=revStr.length;i++){
-  revArr.push(revStr[revStr.length-i]);
-}
-console.log(revArr.join(""))
-let newA=revArr.join("").split(" ");
-for(let i=newA.length-1;i>=0;i--){
-  if(i>0){
-     output+=newA[i]+" ";
-  }
-  else{
-     output+=newA[i];
-  }
- 
-}
-console.log(output);
-Q2:
-  a)Write a function concat which gives same output as "Hello world"
+e)   Make every-first letter of String in Capital and all other in small. 
+Ans:    
+     const str ="welcome to dBS";
+     const convSent=(str)=>{
+	 const words = str.split(" ");
+	 const outputA = [];
+	 for(let i=0;i<words.length;i++){
+	   outputA.push(words[i][0].toUpperCase()+words[i].slice(1).toLowerCase());
+	 }
+	 return outputA.join(" ");
+	}
+	console.log(convSent(str));
+	output: "Welcome To Dbs"	
+	
+f)  Find the length of the maximaum string and return the string.
+Ans:    
+    const str = "This is javascript interview"
+    const revStr=(str)=>{
+	  let newStr=str.split(" ");
+	  var max =0
+	  var str1;
+	  for(var i=0;i<newStr.length;i++){
+          if(newStr[i].length>=max){
+			max= newStr[i].length;
+			str1= newStr[i];
+		  }
+      }
+	  console.log(max);
+	  return str1;
+    }
+	console.log(revStr(str));
+g)  Write a function concat which gives same output as "Hello world"
     concat("Hello","world"); //"Hello world"
 	concat("Hello")("world"); //"Hello world"
-  Ans: 
+Ans: 
     function concat(a,b){
 	 if(b){
 	   return a+" "+b;
@@ -88,222 +119,7 @@ Q2:
 	console.log(concat("Hello")("world"))
 	console.log(concat("Hello","world"))
 	
-Q2: Find the largest pair sum in an unsorted array
-Ans: 
-   function sum(arr)
-    {
-        var fLarge, sLarge;
-        if (arr[0] > arr[1])
-        {
-            fLarge = arr[0];
-            sLarge = arr[1];
-        }
-        else
-        {
-            fLarge = arr[1];
-            sLarge = arr[0];
-        }
-       
-        for (var i = 2; i < arr.length; i ++)
-        {
-            if (arr[i] > fLarge)
-            {
-                sLarge = fLarge;
-                fLarge = arr[i];
-            }
-            else if (arr[i] > sLarge){
-              if(arr[i] != fLarge){
-                sLarge = arr[i];
-              }
-            }
-        }
-        return (fLarge + sLarge);
-    }
-       
-    var arr1 = [12, 34, 10, 6, 40];
-    console.log(sum(arr1));
-Q2: //Selection sort
-	function swap(arr,xp, yp)
-	{
-		var temp = arr[xp];
-		arr[xp] = arr[yp];
-		arr[yp] = temp;
-	}
-	 
-	function selectionSort(arr,  n)
-	{
-		var i, j, min_idx;
-	 
-		// One by one move boundary of unsorted subarray
-		for (i = 0; i < n-1; i++)
-		{
-			// Find the minimum element in unsorted array
-			min_idx = i;
-			for (j = i + 1; j < n; j++)
-			if (arr[j] < arr[min_idx])
-				min_idx = j;
-	 
-			// Swap the found minimum element with the first element
-			swap(arr,min_idx, i);
-		}
-		return arr
-	}
-	 
-
-	var arr = [64, 25, 22,19,12, 22, 11];
-		var n = 7;
-	    console.log("Selection sort is: ",selectionSort(arr, n))
-
-Q2: //Bubble Sort
-	function swap(arr, xp, yp)
-	{
-		var temp = arr[xp];
-		arr[xp] = arr[yp];
-		arr[yp] = temp;
-	}
-	 
-	// An optimized version of Bubble Sort
-	function bubbleSort( arr, n)
-	{
-	  var i, j;
-	  for (i = 0; i < n-1; i++)
-	  {
-		for (j = 0; j < n-i-1; j++)
-		{
-			if (arr[j] > arr[j+1])
-			{
-			 swap(arr,j,j+1);
-			}
-		 }
-	   }
-	   return arr;
-	}
-
-    // Driver program to test above functions
-    var arr = [5, 1, 4, 2, 8];
-    var n = 5;
-    bubbleSort(arr, n);
-    console.log("Bubble sort is: ",bubbleSort(arr, n))
-
-	
-Q2: How to check if an object is an array or not? Provide some code.?
-Ans:
-    var arrayList = [1 , 2, 3];
-	
-	// 1st method
-	if(Object.prototype.toString.call(arrayList) === '[object Array]') {
-	  console.log('Array!');
-	}
-	// 2nd method
-	Array.isArray(arrayList);
-	
-Q3: How to empty an array in JavaScript?
-Ans: 
-    var arrayList =  ['a', 'b', 'c', 'd', 'e', 'f'];
-    //1st method
-	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
-	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
-	arrayList = []; // Empty the array
-	console.log(anotherArrayList); // Output ['a', 'b', 'c', 'd', 'e', 'f']
-	
-	//2nd method
-	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
-	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
-	arrayList.length = 0; // Empty the array by setting length to 0
-	console.log(anotherArrayList); // Output []
-	
-	//3rd method
-	arrayList.splice(0, arrayList.length);
-	
-	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
-	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
-	arrayList.splice(0, arrayList.length); // Empty the array by setting length to 0
-	console.log(anotherArrayList); // Output []
-	
-    //4th method
-	while(arrayList.length) {
-	  arrayList.pop();
-	}
-	
-Q4: How would you check if a number is an integer?
-Ans:
-    function isInt(num) {
-	  return num % 1 === 0;
-	}
-
-	console.log(isInt(4)); // true
-	console.log(isInt(12.2)); // false
-	console.log(isInt(0.3)); // false
-	
-Q5: Implement enqueue and dequeue using only two stacks?
-Ans:
-    //Enqueue means to add an element, dequeue to remove an element.
-
-	var inputStack = []; // First stack
-	var outputStack = []; // Second stack
-
-	// For enqueue, just push the item into the first stack
-	function enqueue(stackInput, item) {
-	  return stackInput.push(item);
-	}
-
-	function dequeue(stackInput, stackOutput) {
-	  // Reverse the stack such that the first element of the output stack is the
-	  // last element of the input stack. After that, pop the top of the output to
-	  // get the first element that was ever pushed into the input stack
-	  if (stackOutput.length <= 0) {
-		while(stackInput.length > 0) {
-		  var elementToOutput = stackInput.pop();
-		  stackOutput.push(elementToOutput);
-		}
-	  }
-
-	  return stackOutput.pop();
-	}
-	
-Q6: duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
-Ans: function duplicate(arr) {
-	  return arr.concat(arr);
-	}
-
-	duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
-	
-Q7: Write a "mul" function which will properly when invoked as below syntax ?
-    console.log(mul(2)(3)(4)); // output : 24
-    console.log(mul(4)(3)(4)); // output : 48
-Ans: function mul (x) {
-	  return function (y) { // anonymous function
-		return function (z) { // anonymous function
-		  return x * y * z;
-		};
-	  };
-	}
-	
-Q8: Write a function that would allow you to do this?
-    var addSix = createBase(6);
-	addSix(10); // returns 16
-	addSix(21); // returns 27
-	
-Ans: function createBase(baseNumber) {
-	  return function(N) {
-		// we are referencing baseNumber here even though it was declared
-		// outside of this function. Closures allow us to do this in JavaScript
-		return baseNumber + N;
-	  }
-	}
-
-	var addSix = createBase(6);
-	addSix(10);
-	addSix(21);
-	
-Q9: FizzBuzz problem using es6
-Ans: for (let i = 1; i <= 100; i++) {
-	  let f = i % 3 == 0,
-		b = i % 5 == 0;
-	  console.log(f ? (b ? 'FizzBuzz' : 'Fizz') : b ? 'Buzz' : i);
-	}
-	
-Q10: Given two strings, return true if they are anagrams of one another?
+h)  Given two strings, return true if they are anagrams of one another?
     (a word or phrase that is made by arranging the letters of another word or phrase in a different order)
      For example: Mary is an anagram of Army
 Ans: var firstWord = "Mary";
@@ -322,255 +138,22 @@ Ans: var firstWord = "Mary";
 
 	  return a === b;
 	}
-	
-Q11: How would you use a closure to create a private counter?
-Ans: You can create a function within an outer function (a closure) that allows you to update a private variable 
-     but the variable wouldn't be accessible from outside the function without the use of a helper function.
-
-	function counter() {
-	  var _counter = 0;
-	  // return an object with several functions that allow you
-	  // to modify the private _counter variable
-	  return {
-		add: function(increment) { _counter += increment; },
-		retrieve: function() { return 'The counter is currently at: ' + _counter; }
-	  }
-	}
-
-	// error if we try to access the private variable like below
-	// _counter;
-
-	// usage of our counter function
-	var c = counter();
-	c.add(5); 
-	c.add(9); 
-
-	// now we can access the private variable in the following way
-	c.retrieve(); // => The counter is currently at: 14
-	
-Q12: What will be the output of the following code?
-    (function() {
-	  var a = b = 5;
-	})();
-
-	console.log(b);
-Ans: The code above will output 5 even though it seems as if the variable was declared within a function and can't be accessed outside of it. This is because
-     var a = b = 5;
-     is interpreted the following way:
-
-	var a = b;
-	b = 5;
-	But b is not declared anywhere in the function with var so it is set equal to 5 in the global scope.
-
-
-Q13: Write a function that would allow you to do this?
-     multiply(5)(6);
-Ans: function multiply(a) {
-	  return function(b) {
-		return a * b;
-	  }
-	}
-
-	multiply(5)(6);
-	
-Q14: What will be the output of the following code?
-	var y = 1;
-	if (function f() {}) {
-	  y += typeof f;
-	}
-	console.log(y);
-Ans: Above code would give output 1undefined. If condition statement evaluate 
-	using eval so eval(function f() {}) which return function f() {} which is true so inside if 
-	statement code execute. typeof f return undefined because if statement code execute at run time, 
-	so statement inside if condition evaluated at run time.
-
-	var k = 1;
-	if (1) {
-	  eval(function foo() {});
-	  k += typeof foo;
-	}
-	console.log(k);
-	Above code will also output 1undefined.
-
-	var k = 1;
-	if (1) {
-	  function foo() {};
-	  k += typeof foo;
-	}
-	console.log(k); // output 1function
-
-
-Q15 . function solution(arrLen,inputArr){
-			var sortedArr=inputArr.slice().sort((a,b)=>a-b)
-			var results=[];
-			for(var i=0;i<sortedArr.length-1;i++){
-				if(sortedArr[i+1]===sortedArr[i]){
-					results.push(sortedArr[i])
-				}
-			}
-			if(results.length===0){
-			  return -1;
-			} else{
-				return results;
-			}
-	}
-	var inputArr2 = [9,9, 111, 2, 3,4,4, 5,5, 7];
-	var input2=inputArr2.length;
-	solution(input2,inputArr2)
-
-	output: [9,4,5]
-
-	var inputArr1 = [9, 111, 2, 3,4, 5, 7];
-	var input1=inputArr1.length;
-	solution(input1,inputArr1)
-
-	output -1
-Q16 . var str="Hi_anurag_how_are_you?"
-        output = "HiAnuragHowAreYou"
-        
-        Ans:
-        const convertUpperCase = (str) => {
+i)  Input: "Hi_anurag_how_are_you?"
+    output: "HiAnuragHowAreYou"
+Ans:
+    var str="Hi_anurag_how_are_you?"
+    const convertUpperCase = (str) => {
         let words = str.split("_");
             let output = "";
             words.forEach(word=>{
                 output += word[0].toUpperCase()+word.slice(1)+"";
             })
             return output;
-        }
-        convertUpperCase("Hi_anurag_how_are_you?");
-
-Q17. Convert the following into flat array>
-     [2,[4],[[6]],[[[8]]]]
-Ans const customFlatArr=(arr)=>{
-        let flatArr=arr.join(",").split(",")
-        let res=[];
-        for(let i=0;i<flatArr.length;i++){
-            res.push(parseInt(flatArr[i]))
-        }
-        return res;
     }
-    customFlatArr([2,[4],[[6]],[[[8]]]]);
-    output: [2, 4, 6, 8]
-Q18. How to find the duplicate elements in an Array ?
-		var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
-		var sortedArr=arr.slice().sort();// incorrect way of sorting an array of number it is correct in case of string only
-		var sortedArr=arr.slice.sort((a,b)=>a-b)
-		var results=[];
-		for(var i=0;i<sortedArr.length-1;i++){
-			if(sortedArr[i+1]===sortedArr[i]){
-				results.push(sortedArr[i])
-			}
-		}
-		console.log(results)
-		
-		output: [4,9]
-		
-Q19. How to remove duplicate elements in an Array ?
-	        var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
-            arr=arr.sort();
-            function uniqueArray(arr){
-                return  Array.from(new Set(arr))
-            }
-			// by using ES6 syntax
-			//let uniqueArray = a => [...new Set(a)];
-            uniqueArray(arr);
-Q20. How to sort an Array of Object based on  a particular ID ?
-	    var arrObj1=[
-					  {id:1,Name:"Abhijeet"},
-					  {id:2,Name:"Saurabh"}
-                    ]
-		function compareValue(key,order ='asc'){
-				return function(a,b) {
-						if(!a.hasOwnProperty(key) || !b. hasOwnProperty(key)){
-							  //property does not exist on either object
-							  return 0;
-						}
-						
-						 const   varA =(typeof a[key]=== 'string') ? a[key].toUpperCase() : a[key];
-						 const   varB =(typeof b[key]=== 'string') ? b[key].toUpperCase() : b[key];
-						 let comparison =0;
-						 if(varA >varB ) {
-							comparison =1;
-						 } else if (varA < varB ){
-							comparison = -1;
-					     }
-					  return ((order == 'desc')   ? (comparison * -1) : comparison);
-				   } ;    
-		}
-		
-		arrObj1.sort(compareValue('Name'));
-		
-Q21. How to delete a particular element(object ) from  an array of object ?
-        :) Without using filter function:
-		 var arrObj1=[
-                      {id:1,Name:"Abhijeet"},
-					  {id:2,Name:"Saurabh"},
-					  {id:3,Name:"Muni"}
-                    ]
-
-		function comp(arr,a){
-		  let newArray=arr.slice();
-		  let newArr=[];
-			for(let i=0; i<newArray.length;i++){     
-			 if(arr[i].id!==a){
-				newArr.push(arr[i]);
-			 }
-		  }
-		  return newArr;
-		}
-
-		comp(arrObj1,1);
-        
-		:) With Filter function
-		   arrObj1.filter(ele=>{return ele.id!==2});
-		   
-Q22.  Find the  sum of numbers .
-	    case 1: Using string
-			var num = 12345;
-			var str = num.toString(); //it will convert it into a string
-			var arr = str.split(""); //it will convert it into an array
-			
-			var sum = 0;
-			for(var i = 0; i< arr.length; i++) {
-			sum = sum + parseInt(arr[i]);
-			//The parseInt() function parses a string argument   
-			//and returns an integer of the specified radix (the base in mathematical numeral system).
-			}
-			console.log(sum);
-		case 2: Using normal Math function	
-			var value = 2568,
-				sum = 0;
-
-			while (value) {
-				sum += value % 10;
-				value = Math.floor(value / 10);
-			}
-
-			console.log(sum);
-
-Q23.  How to reverse a number ?
-	    case 1:  var num = 12345;
-            var str = num.toString(); //it will convert it into a string
-            var arr = str.split(""); //it will convert it into an array
-
-			var revArr = arr.reverse();
-			console.log(revArr);
-			var string = revArr.toString();
-			console.log(string);
-			var str1 = string.replace(/,/g,"");
-			console.log(str1);
-			var num1 = parseInt(str1);
-			console.log(num1);  
-		case 2: Using join() method
-		
-		    var num = 12345;
-            var str = num.toString(); //it will convert it into a string
-            var arr = str.split(""); //it will convert it into an array
-            var revArr = arr.reverse();
-		    parseInt(revArr.join(""));
-			
-			
-Q24.  How to make first letter of every word in a string in capital ?
+    convertUpperCase("Hi_anurag_how_are_you?");	
+j)  How to make first letter of every word in a string in capital ?
+ans:      
+	first way:
 			var str = "i am indian";
 			var arr = str.split(" ");
 			var arrLen = arr.length;
@@ -583,10 +166,25 @@ Q24.  How to make first letter of every word in a string in capital ?
 			var str1 = newArr.toString();
 			var str2 = str1.replace(/,/g, " ");
 			console.log(str2); 
-
-Q25.  you are given a string consisting of digits. Find the biggest two-digits value that is a consistent fragment of the given string.
-        For example, two-digit consistent fragment of "50552" are["50","05","55","52"], representing the numbers [50,5,55,52]. the biggest value among them is 55.		
-    Ans:  
+			output: "I Am Indian"
+			
+	second way:
+			var str = "i am indian";
+			const convertUpperCase = (str) => {
+			let words = str.split(" ");
+				let output = "";
+				words.forEach(word=>{
+					output += word[0].toUpperCase()+word.slice(1)+" ";
+				})
+				return output;
+			}
+			convertUpperCase(str);
+			
+			output: "I Am Indian"
+k)  you are given a string consisting of digits. Find the biggest two-digits value that is a consistent fragment of the given string.
+    For example, two-digit consistent fragment of "50552" are["50","05","55","52"], representing the numbers [50,5,55,52]. 
+	the biggest value among them is 55.		
+Ans:  
     case 1:
         function getMax(s)
 		{
@@ -610,7 +208,7 @@ Q25.  you are given a string consisting of digits. Find the biggest two-digits v
 			return output.sort((a,b)=>a-b)[output.length-1];
 		}
 		solution("50552")		
-Q26.  Given string s consisting of n characters returns alphabetically smallest string that can be obtained by removing exactly one letter from s
+l)  Given string s consisting of n characters returns alphabetically smallest string that can be obtained by removing exactly one letter from s
 	    Examples: 
 
 		Input: str = "abcda"  
@@ -620,9 +218,9 @@ Q26.  Given string s consisting of n characters returns alphabetically smallest 
 
 		Input: str = "aaa' 
 		Output: aa
-	Ans:
-    case1:
-    function smallest(s)
+Ans:
+        case1:
+        function smallest(s)
 		{
 			let l = s.length;
 			let ans = "";
@@ -661,6 +259,680 @@ Q26.  Given string s consisting of n characters returns alphabetically smallest 
 			return output.sort()[0]
 		}
 	    solution2("acb")
+
+Recursion Based Question
+========================
+Q1:  Write recursive function to find string is pallendrome or not.
+     const isPalindrome = str => {
+		
+		// base case
+		if(str.length === 1) return true;
+		if(str.length === 2) return str[0] === str[1];
+
+		if(str[0] === str[str.length - 1]) {
+			console.log(str.slice(1, -1))
+			return isPalindrome(str.slice(1, -1))
+		}
+        return false;
+	}
+	isPalindrome('kmadamk')  //true 
+Q2: Write recursive function to find the sum of elements in an array.
+    You have two solutions:
+    you can use .reduce() method
+	or perform a simple tail recursion
+	With reduction:
+    ---------------
+	function sum(a, b) {
+	  return a + b;
+	}
+
+	const array = [1, 2, 3, 4, 5, 6];
+
+	//In our reduce, we will apply our sum function, 
+	//and pass the result as the next value
+	const res = array.reduce(sum);
+	With recursion:
+    --------------
+	function sumRec(array, acc = 0, index) {
+		//We will update our accumulator, and increment
+	  // the value of our current index
+	  return index === array.length
+	  ? acc
+	  : sumRec(array, acc += array[index], ++index);
+	}
+
+	console.log(sumRec(array, 0, 0));
+====================================================	
+
+Array based question:
+=====================
+Q1: Find duplicate element in an array (only those whose count is 2 if count is more than 2 donot consider as a duplicate)
+    
+Ans:  
+      const arr =[1,2,2,2,1,3,4,5,3];
+      const Arrfun=(a)=>{
+	  let obj={};
+	  let result=[]
+	  for(let i=0;i<a.length;i++){
+	   if(obj[a[i]]){
+		  obj[a[i]]=obj[a[i]]+1;
+		}
+	   else{
+		 obj[a[i]]=1;
+		}
+	  }
+	  Object.keys(obj).forEach((ele)=>{
+		if(obj[ele]===2){
+		  result.push(ele)
+		 }
+	  })
+	   
+	  return result;
+	}
+
+	console.log(Arrfun(arr));
+	output: //[1,3]
+Q2: Flatten JavaScript objects into a single-depth Object
+    Approach:
+
+	We make a function called flatten object which takes input of an object and returns an object.
+	Loop through the object and check the type of the current property:
+	If it is of type Object and it is not an Array , recursively call the function again.
+	Otherwise, store the value in the result.
+	Return the object.
+	
+	// Declare an object
+	let ob = {
+		Company: "GeeksforGeeks",
+		Address: "Noida",
+		contact: +91-999999999,
+		mentor: {
+			HTML: "GFG",
+			CSS: "GFG",
+			JavaScript: "GFG"
+		}
+	};
+	 
+	// Declare a flatten function that takes
+	// object as parameter and returns the
+	// flatten object
+	const flattenObj = (ob) => {
+	 
+		// The object which contains the
+		// final result
+		let result = {};
+	 
+		// loop through the object "ob"
+		for (const i in ob) {
+	 
+			// We check the type of the i using
+			// typeof() function and recursively
+			// call the function again
+			if ((typeof ob[i]) === 'object' && !Array.isArray(ob[i])) {
+				const temp = flattenObj(ob[i]);
+				for (const j in temp) {
+	 
+					// Store temp in result
+					result[i + '.' + j] = temp[j];
+				}
+			}
+	 
+			// Else store ob[i] in result directly
+			else {
+				result[i] = ob[i];
+			}
+		}
+		return result;
+	};
+	 
+	console.log(flattenObj(ob));
+	output: {
+			  Company: 'GeeksforGeeks',
+			  Address: 'Noida',
+			  contact: -999999908,
+			  'mentor.HTML': 'GFG',
+			  'mentor.CSS': 'GFG',
+			  'mentor.JavaScript': 'GFG'
+			}
+Q3: Find the unique average of all the max and min elements of an array having even number of elements. 
+    function avgSumarry(arr){
+		var newarr= arr.slice().sort((a,b)=>a-b);
+		var result=[];
+		var min,max,sum;
+		var arrLen = newarr.length;
+        for(var i=0;i< arrLen/2;i++){
+		  min=newarr[i];
+		  max=newarr[(arrLen-1)-i];
+		  result.push((min+max)/2);
+		}
+	    return result
+	}
+
+	var arr = [4,1,4,0,3,5];
+	var avgArr=avgSumarry(arr)
+	console.log(avgArr); //[2.5,2.5,3.5]
+
+	function uniqueArr(arr){
+	  return Array.from(new Set(arr))
+	}
+	console.log(uniqueArr(avgArr)); //[2.5,3.5]
+Q4: Check whether there are any two numbers that will sum up to a given number, from a unsorted array.
+Ans:
+    function checkSum(array, sum) {
+	  var result ="" ;
+	  for(var i=0;i<array.length;i++){
+	   for(var j=i+1;j< array.length-1 ;j++){
+		 var inner = array[i]+array[j];
+		 if(inner===sum){
+		   result= true
+		 }
+	   }
+	  }
+	  if(result){
+	   console.log(true);
+	  }else{
+		console.log(false);
+	  } 
+	}
+
+	checkSum([2,8,4,6,5], 6); //true
+	checkSum([8,9,1,3,7], 18); //false
+
+	
+Q5: Find the largest pair sum in an unsorted array
+Ans: 
+   function sum(arr)
+    {
+        var fLarge, sLarge;
+        if (arr[0] > arr[1])
+        {
+            fLarge = arr[0];
+            sLarge = arr[1];
+        }
+        else
+        {
+            fLarge = arr[1];
+            sLarge = arr[0];
+        }
+       
+        for (var i = 2; i < arr.length; i ++)
+        {
+            if (arr[i] > fLarge)
+            {
+                sLarge = fLarge;
+                fLarge = arr[i];
+            }
+            else if (arr[i] > sLarge){
+              if(arr[i] != fLarge){
+                sLarge = arr[i];
+              }
+            }
+        }
+        return (fLarge + sLarge);
+    }
+       
+    var arr1 = [12, 34, 10, 6, 40];
+    console.log(sum(arr1));
+Q6: //Selection sort
+Ans:	
+	function swap(arr,xp, yp)
+	{
+		var temp = arr[xp];
+		arr[xp] = arr[yp];
+		arr[yp] = temp;
+	}
+	 
+	function selectionSort(arr,  n)
+	{
+		var i, j, min_idx;
+	 
+		// One by one move boundary of unsorted subarray
+		for (i = 0; i < n-1; i++)
+		{
+			// Find the minimum element in unsorted array
+			min_idx = i;
+			for (j = i + 1; j < n; j++)
+			if (arr[j] < arr[min_idx])
+				min_idx = j;
+	 
+			// Swap the found minimum element with the first element
+			swap(arr,min_idx, i);
+		}
+		return arr
+	}
+	 
+
+	var arr = [64, 25, 22,19,12, 22, 11];
+		var n = 7;
+	    console.log("Selection sort is: ",selectionSort(arr, n))
+
+Q7: //Bubble Sort
+	function swap(arr, xp, yp)
+	{
+		var temp = arr[xp];
+		arr[xp] = arr[yp];
+		arr[yp] = temp;
+	}
+	 
+	// An optimized version of Bubble Sort
+	function bubbleSort( arr, n)
+	{
+	  var i, j;
+	  for (i = 0; i < n-1; i++)
+	  {
+		for (j = 0; j < n-i-1; j++)
+		{
+			if (arr[j] > arr[j+1])
+			{
+			 swap(arr,j,j+1);
+			}
+		 }
+	   }
+	   return arr;
+	}
+
+    // Driver program to test above functions
+    var arr = [5, 1, 4, 2, 8];
+    var n = 5;
+    bubbleSort(arr, n);
+    console.log("Bubble sort is: ",bubbleSort(arr, n))
+
+	
+Q8: How to check if an object is an array or not? Provide some code.?
+Ans:
+    var arrayList = [1 , 2, 3];
+	
+	// 1st method
+	if(Object.prototype.toString.call(arrayList) === '[object Array]') {
+	  console.log('Array!');
+	}
+	// 2nd method
+	Array.isArray(arrayList);
+	
+Q9: How to empty an array in JavaScript?
+Ans: 
+    var arrayList =  ['a', 'b', 'c', 'd', 'e', 'f'];
+    //1st method
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList = []; // Empty the array
+	console.log(anotherArrayList); // Output ['a', 'b', 'c', 'd', 'e', 'f']
+	
+	//2nd method
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList.length = 0; // Empty the array by setting length to 0
+	console.log(anotherArrayList); // Output []
+	
+	//3rd method
+	arrayList.splice(0, arrayList.length);
+	
+	var arrayList = ['a', 'b', 'c', 'd', 'e', 'f']; // Created array
+	var anotherArrayList = arrayList;  // Referenced arrayList by another variable
+	arrayList.splice(0, arrayList.length); // Empty the array by setting length to 0
+	console.log(anotherArrayList); // Output []
+	
+    //4th method
+	while(arrayList.length) {
+	  arrayList.pop();
+	}
+Q10: duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+Ans: 
+    function duplicate(arr) {
+	  return arr.concat(arr);
+	}
+
+	duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+
+Q11: Find the duplicate element in array and return -1 if there is no duplicate
+Ans: 
+    function solution(arrLen,inputArr){
+			var sortedArr=inputArr.slice().sort((a,b)=>a-b)
+			var results=[];
+			for(var i=0;i<sortedArr.length-1;i++){
+				if(sortedArr[i+1]===sortedArr[i]){
+					results.push(sortedArr[i])
+				}
+			}
+			if(results.length===0){
+			  return -1;
+			} else{
+				return results;
+			}
+	}
+	var inputArr2 = [9,9, 111, 2, 3,4,4, 5,5, 7];
+	var input2=inputArr2.length;
+	solution(input2,inputArr2)
+
+	output: [9,4,5]
+
+	var inputArr1 = [9, 111, 2, 3,4, 5, 7];
+	var input1=inputArr1.length;
+	solution(input1,inputArr1)
+
+	output -1
+	
+
+Q12. Convert the following into flat array>
+     [2,[4],[[6]],[[[8]]]]
+Ans const customFlatArr=(arr)=>{
+        let flatArr=arr.join(",").split(",")
+        let res=[];
+        for(let i=0;i<flatArr.length;i++){
+            res.push(parseInt(flatArr[i]))
+        }
+        return res;
+    }
+    customFlatArr([2,[4],[[6]],[[[8]]]]);
+    output: [2, 4, 6, 8]
+Q13. How to find the duplicate elements in an Array ?
+Ans:
+		var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
+		var sortedArr=arr.slice().sort();// incorrect way of sorting an array of number it is correct in case of string only
+		var sortedArr=arr.slice.sort((a,b)=>a-b)
+		var results=[];
+		for(var i=0;i<sortedArr.length-1;i++){
+			if(sortedArr[i+1]===sortedArr[i]){
+				results.push(sortedArr[i])
+			}
+		}
+		console.log(results)
+		
+		output: [4,9]
+		
+Q14. How to remove duplicate elements in an Array ?
+Ans:
+	var arr = [9, 9, 111, 2, 3, 4, 4, 5, 7];
+    arr=arr.sort();
+			
+	case 1: Using set		
+            function uniqueArray(arr){
+                return  Array.from(new Set(arr))
+            }
+			uniqueArray(arr);
+			
+	case 2:	using ES6 syntax
+			let uniqueArray = a => [...new Set(a)];
+			
+    case 3: Using normal for loop
+	        function arrUnique(arr){
+			  var res=[];
+			  for(var i=0;i<arr.length;i++){
+			 
+				if(arr[i]!=arr[i+1]){
+				 res.push(arr[i]);
+				} 
+			  }
+			  return res;
+			}
+			arrUnique(newArr);
+			console.log(arrUnique(newArr));
+			Q20. How to sort an Array of Object based on  a particular ID ?
+	    var arrObj1=[
+					  {id:1,Name:"Abhijeet"},
+					  {id:2,Name:"Saurabh"}
+                    ]
+		function compareValue(key,order ='asc'){
+				return function(a,b) {
+						if(!a.hasOwnProperty(key) || !b. hasOwnProperty(key)){
+							  //property does not exist on either object
+							  return 0;
+						}
+						
+						 const   varA =(typeof a[key]=== 'string') ? a[key].toUpperCase() : a[key];
+						 const   varB =(typeof b[key]=== 'string') ? b[key].toUpperCase() : b[key];
+						 let comparison =0;
+						 if(varA >varB ) {
+							comparison =1;
+						 } else if (varA < varB ){
+							comparison = -1;
+					     }
+					  return ((order == 'desc')   ? (comparison * -1) : comparison);
+				   } ;    
+		}
+		
+		arrObj1.sort(compareValue('Name'));
+		
+Q15. How to delete a particular element(object ) from  an array of object ?
+        :) Without using filter function:
+		 var arrObj1=[
+                      {id:1,Name:"Abhijeet"},
+					  {id:2,Name:"Saurabh"},
+					  {id:3,Name:"Muni"}
+                    ]
+
+		function comp(arr,a){
+		  let newArray=arr.slice();
+		  let newArr=[];
+			for(let i=0; i<newArray.length;i++){     
+			 if(arr[i].id!==a){
+				newArr.push(arr[i]);
+			 }
+		  }
+		  return newArr;
+		}
+
+		comp(arrObj1,1);
+        
+		:) With Filter function
+		   arrObj1.filter(ele=>{return ele.id!==2});
+		   
+
+	
+General question :
+Q1: How would you check if a number is an integer?
+Ans:
+    function isInt(num) {
+	  return num % 1 === 0;
+	}
+
+	console.log(isInt(4)); // true
+	console.log(isInt(12.2)); // false
+	console.log(isInt(0.3)); // false
+	
+Q2: Implement enqueue and dequeue using only two stacks?
+Ans:
+    //Enqueue means to add an element, dequeue to remove an element.
+
+	var inputStack = []; // First stack
+	var outputStack = []; // Second stack
+
+	// For enqueue, just push the item into the first stack
+	function enqueue(stackInput, item) {
+	  return stackInput.push(item);
+	}
+
+	function dequeue(stackInput, stackOutput) {
+	  // Reverse the stack such that the first element of the output stack is the
+	  // last element of the input stack. After that, pop the top of the output to
+	  // get the first element that was ever pushed into the input stack
+	  if (stackOutput.length <= 0) {
+		while(stackInput.length > 0) {
+		  var elementToOutput = stackInput.pop();
+		  stackOutput.push(elementToOutput);
+		}
+	  }
+
+	  return stackOutput.pop();
+	}
+	
+Q3: Write a "mul" function which will properly when invoked as below syntax ?
+    console.log(mul(2)(3)(4)); // output : 24
+    console.log(mul(4)(3)(4)); // output : 48
+Ans: function mul (x) {
+	  return function (y) { // anonymous function
+		return function (z) { // anonymous function
+		  return x * y * z;
+		};
+	  };
+	}
+	
+Q4: Write a function that would allow you to do this?
+    var addSix = createBase(6);
+	addSix(10); // returns 16
+	addSix(21); // returns 27
+	
+Ans: function createBase(baseNumber) {
+	  return function(N) {
+		// we are referencing baseNumber here even though it was declared
+		// outside of this function. Closures allow us to do this in JavaScript
+		return baseNumber + N;
+	  }
+	}
+
+	var addSix = createBase(6);
+	addSix(10);
+	addSix(21);
+	
+Q5: FizzBuzz problem using es6
+Ans: 
+    case 1: Using Conditional operator
+    for (let i = 1; i <= 100; i++) {
+	  let f = i % 3 == 0,
+		b = i % 5 == 0;
+	  console.log(f ? (b ? 'FizzBuzz' : 'Fizz') : b ? 'Buzz' : i);
+	}
+	
+	case 2:
+	for (let i = 1; i <= 25; i++) {
+		if(i%15==0){
+			console.log("fizbuzz")
+		}else if(i%3==0){
+			console.log("fizz")
+		} else if(i%5==0){
+			console.log("buzz")
+		} else{
+			console.log(i)
+		}
+	}
+
+Q6: How would you use a closure to create a private counter?
+Ans: You can create a function within an outer function (a closure) that allows you to update a private variable 
+     but the variable wouldn't be accessible from outside the function without the use of a helper function.
+
+	function counter() {
+	  var _counter = 0;
+	  // return an object with several functions that allow you
+	  // to modify the private _counter variable
+	  return {
+		add: function(increment) { _counter += increment; },
+		retrieve: function() { return 'The counter is currently at: ' + _counter; }
+	  }
+	}
+
+	// error if we try to access the private variable like below
+	// _counter;
+
+	// usage of our counter function
+	var c = counter();
+	c.add(5); 
+	c.add(9); 
+
+	// now we can access the private variable in the following way
+	c.retrieve(); // => The counter is currently at: 14
+	
+Q7: What will be the output of the following code?
+    (function() {
+	  var a = b = 5;
+	})();
+
+	console.log(b);
+Ans: The code above will output 5 even though it seems as if the variable was declared within a function and can't be accessed outside of it. This is because
+     var a = b = 5;
+     is interpreted the following way:
+
+	var a = b;
+	b = 5;
+	But b is not declared anywhere in the function with var so it is set equal to 5 in the global scope.
+
+
+Q8: Write a function that would allow you to do this?
+     multiply(5)(6);
+Ans: function multiply(a) {
+	  return function(b) {
+		return a * b;
+	  }
+	}
+
+	multiply(5)(6);
+	
+Q9: What will be the output of the following code?
+	var y = 1;
+	if (function f() {}) {
+	  y += typeof f;
+	}
+	console.log(y);
+Ans: Above code would give output 1undefined. If condition statement evaluate 
+	using eval so eval(function f() {}) which return function f() {} which is true so inside if 
+	statement code execute. typeof f return undefined because if statement code execute at run time, 
+	so statement inside if condition evaluated at run time.
+
+	var k = 1;
+	if (1) {
+	  eval(function foo() {});
+	  k += typeof foo;
+	}
+	console.log(k);
+	Above code will also output 1undefined.
+
+	var k = 1;
+	if (1) {
+	  function foo() {};
+	  k += typeof foo;
+	}
+	console.log(k); // output 1function
+
+
+Q10.  Find the  sum of numbers .
+Ans:
+	    case 1: Using string
+			var num = 12345;
+			var str = num.toString(); //it will convert it into a string
+			var arr = str.split(""); //it will convert it into an array
+			
+			var sum = 0;
+			for(var i = 0; i< arr.length; i++) {
+			sum = sum + parseInt(arr[i]);
+			//The parseInt() function parses a string argument   
+			//and returns an integer of the specified radix (the base in mathematical numeral system).
+			}
+			console.log(sum);
+		case 2: Using normal Math function	
+			var value = 2568,
+				sum = 0;
+
+			while (value) {
+				sum += value % 10;
+				value = Math.floor(value / 10);
+			}
+
+			console.log(sum);
+
+Q11.  How to reverse a number ?
+Ans:
+	    case 1:  var num = 12345;
+            var str = num.toString(); //it will convert it into a string
+            var arr = str.split(""); //it will convert it into an array
+
+			var revArr = arr.reverse();
+			console.log(revArr);
+			var string = revArr.toString();
+			console.log(string);
+			var str1 = string.replace(/,/g,"");
+			console.log(str1);
+			var num1 = parseInt(str1);
+			console.log(num1);  
+		case 2: Using join() method
+		
+		    var num = 12345;
+            var str = num.toString(); //it will convert it into a string
+            var arr = str.split(""); //it will convert it into an array
+            var revArr = arr.reverse();
+		    parseInt(revArr.join(""));
+			
+			
+
+
 Q27. Custom JS function .
    
     A). Write your own map function:
