@@ -34,7 +34,7 @@ d) Input - "hello world"
    Output - "olleh dlrow"
 Ans:   
     case 1: By using reverse method
-     console.log(str1.split("").reverse().join(""));
+    console.log(str1.split("").reverse().join(""));
 	 
     case 2: Without using reverse method
      var revWords=(str)=>{
@@ -74,6 +74,7 @@ Ans:
 
 e)   Make every-first letter of String in Capital and all other in small. 
 Ans:    
+     first method:
      const str ="welcome to dBS";
      const convSent=(str)=>{
 	 const words = str.split(" ");
@@ -85,6 +86,18 @@ Ans:
 	}
 	console.log(convSent(str));
 	output: "Welcome To Dbs"	
+	
+	second method:
+	var str="welcome to dBS"
+    const convertUpperCase = (str) => {
+        let words = str.split(" ");
+            let output = "";
+            words.forEach(word=>{
+                output += word[0].toUpperCase()+word.slice(1).toLowerCase()+" ";
+            })
+            return output;
+    }
+    convertUpperCase(str);	
 	
 f)  Find the length of the maximaum string and return the string.
 Ans:    
@@ -667,8 +680,8 @@ Ans:
 			}
 			arrUnique(newArr);
 			console.log(arrUnique(newArr));
-			Q20. How to sort an Array of Object based on  a particular ID ?
-	    var arrObj1=[
+Q15. How to sort an Array of Object based on  a particular ID ?
+Ans:	    var arrObj1=[
 					  {id:1,Name:"Abhijeet"},
 					  {id:2,Name:"Saurabh"}
                     ]
@@ -693,7 +706,7 @@ Ans:
 		
 		arrObj1.sort(compareValue('Name'));
 		
-Q15. How to delete a particular element(object ) from  an array of object ?
+Q16. How to delete a particular element(object ) from  an array of object ?
         :) Without using filter function:
 		 var arrObj1=[
                       {id:1,Name:"Abhijeet"},
@@ -718,7 +731,36 @@ Q15. How to delete a particular element(object ) from  an array of object ?
 		   arrObj1.filter(ele=>{return ele.id!==2});
 		   
 
-	
+Q17. How can you find element with highest occurrence?
+Ans:  
+    let arr = [18, 21, 1, 1, 51, 18, 21, 5, 18,18,18, 7, 10, 51, 21, 21];
+
+	const highestOccr=(arr)=>{
+		let newArr=arr.slice().sort((a,b)=>a-b);
+		let obj={};
+		let result=[]
+		for(let i=0;i<newArr.length;i++){
+		   if(obj[arr[i]]){
+			 obj[arr[i]]= obj[arr[i]] +1
+		   } else{
+			obj[arr[i]]=1
+		   }
+		}
+		console.log(obj)
+		console.log(Object.entries(obj))
+		let max=0;
+		let str=""
+		
+		Object.entries(obj).map((ele)=>{
+		  if(ele[1]>=max){
+			max=ele[1];
+			str=ele[0];
+		  }
+		})
+		console.log("highest occurrence element is "+str+" it's having frequency of "+max)
+	}
+	highestOccr(arr)	
+	output: "highest occurrence element is 18 it's having frequency of 5"
 General question :
 Q1: How would you check if a number is an integer?
 Ans:
