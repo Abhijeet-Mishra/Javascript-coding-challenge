@@ -272,6 +272,26 @@ Ans:
 			return output.sort()[0]
 		}
 	    solution2("acb")
+		
+m)      If there are 4 consecutive charaters either of number or alphabet are coming take it as bad input
+Ans:  
+		function testConsecutive(s){
+		  for(let i=1;i<s.length;i++){
+			if(Math.abs(s.charCodeAt(i-1)-s.charCodeAt(i))!==1){
+			  return false;
+			}
+		  }
+		  return true
+		}
+        function testStr(str){
+			for(let i=0;i<str.length-3;i++){
+				if(testConsecutive(str.slice(i,i+4))){
+				return "Bad input"
+				}
+			}
+		  return "Good input"
+		}
+        console.log(testStr("ABC34589"))
 
 Recursion Based Question
 ========================
@@ -761,6 +781,7 @@ Ans:
 	}
 	highestOccr(arr)	
 	output: "highest occurrence element is 18 it's having frequency of 5"
+	
 General question :
 Q1: How would you check if a number is an integer?
 Ans:
@@ -999,7 +1020,23 @@ Q27. Custom JS function .
 	});
 
 	console.log(square);
+	
+    Array.prototype.myMap = function (mapFunction){
+		let mapArr=[];
+		console.log(this);
+		for(let i=0;i<this.length;i++){
+		  const result=mapFunction(this[i],i,this);
+		   mapArr.push(result)
+		}
+	   return mapArr;
+	}
 
+
+
+	let sqr=[1,2,3,4,5]
+	sqr.myMap(i=>i*2)
+	console.log(sqr.myMap(i=>i*2))
+	
 	B) Write your own filter function:
 	   -------------------------------
 	let arr =[1,2,3,4,5];
@@ -1097,6 +1134,24 @@ Q3. Whaat is the output of the following?
 	console.log(a);
 	console.log(b);
 	output: Uncaught ReferenceError: a is not defined
+	
+Q4:
+    let obj={name:"Abhi"};
+	let a= 10;
+	let arr=[];
+	function callFun(obj,a,arr){
+		obj.name="Mish";
+		a=11;
+		arr.push(12);
+	}
+	callFun(obj,a,arr);
+	console.log(obj.name);
+	console.log(a);
+	console.log(arr);
+	output: Mish
+	        10
+			[12]
+			
 
 What is promise ?
     A Promise is a proxy for a value not necessarily known when the promise is created. 
