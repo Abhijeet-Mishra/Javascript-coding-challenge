@@ -292,6 +292,23 @@ Ans:
 		  return "Good input"
 		}
         console.log(testStr("ABC34589"))
+n)  Find the frequency of eah character in a string.
+Ans: 
+     const countStr=(str)=>{
+	   let newStr = str.split("").sort();
+	   let obj={}
+	   for(let i=0;i<newStr.length;i++){
+		if(obj[newStr[i]]){
+		  obj[newStr[i]]=obj[newStr[i]] +1
+		}else {
+		  obj[newStr[i]] =1
+		}
+	   }
+	   
+	   console.log(Object.entries(obj));
+	   
+	}
+	countStr("ababacdcdcp")
 
 Recursion Based Question
 ========================
@@ -782,6 +799,109 @@ Ans:
 	highestOccr(arr)	
 	output: "highest occurrence element is 18 it's having frequency of 5"
 	
+Q18. How to sort an array of object based on a particular value .
+Ans: 
+     let myobj=[
+	  {
+		name:"Abhijeet",
+		age:38,
+		gender:"Male"
+	  },
+	  {
+		name:"Anurag",
+		age:35,
+		gender:"Male"
+	  },
+	  {
+		name:"Amit",
+		age:24,
+		gender:"Male"
+	  },
+		{
+		name:"Amitta",
+		age:26,
+		gender:"Male"
+	  }
+	]
+
+	myobj.sort((a,b)=>(a.age-b.age));
+	
+Q19. How to compare two objects in javascript?
+Ans Objects are reference types so you can’t just use === or == to compare 2 objects. 
+    One quick way to compare if 2 objects have the same key value, is using JSON.stringify. 
+	Another way is using Lodash isEqual function
+	
+	const k1 = { fruit: 'orange' };
+    const k2 = { fruit: 'apple' };
+
+    case 1:Using JavaScript
+    JSON.stringify(k1) === JSON.stringify(k2); // true
+
+    case 2:Using Lodash
+    _.isEqual(k1, k2); // true
+	
+	Note: the 2 ways also work for deep nested objects
+	const one = {
+	  fruit: 'orange',
+	  nutrients: {
+		energy: '255kJ',
+		minerals: {
+		  name: 'calcium',
+		},
+	  },
+	};
+
+	const two = {
+	  fruit: 'apple',
+	  nutrients: {
+		energy: '255kJ',
+		minerals: {
+		  name: 'calcium',
+		},
+	  },
+	};
+
+	// Using JavaScript
+	JSON.stringify(one) === JSON.stringify(two); // true
+
+	// Using Lodash
+	_.isEqual(one, two); // true
+	Note: 
+	1.For JSON.stringify(), the order matters. 
+	  So if the key-value pair are ordered differently in the two objects but are the same, 
+	  it will return false. 
+	2.For Lodash method order doesn't matter in Lodash isEqual, 
+	  it will return true as along as the key-value pair exists.
+	  
+Q20. How to find the property of the difference between two objects in JavaScript
+Ans: 
+     const obj1 = {
+	   name: 'Abhijeet Mishra',
+	   isEmployed: true,
+	   age: 45,
+	   salary: 190000,
+	   job: 'Full Stack Developer',
+	   employedSince: 2005
+	}
+	const obj2 = {
+	   name: 'Abhijeet Mishra',
+	   isEmployed: true,
+	   age: 45,
+	   salary: 19000,
+	   job: 'Full Stack Developer',
+	   employedSince: 2005
+	}
+	const difference = (obj1, obj2) => {
+	   let keyFound = false;
+	   Object.keys(obj1).forEach(key => {
+		  if(obj1[key] !== obj2[key]){
+			 return keyFound = key;
+		  }
+	   });
+	   return keyFound || -1;
+	};
+	console.log(difference(obj1, obj2));
+	output: salary
 General question :
 Q1: How would you check if a number is an integer?
 Ans:
