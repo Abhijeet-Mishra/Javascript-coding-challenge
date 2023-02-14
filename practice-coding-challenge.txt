@@ -902,6 +902,31 @@ Ans:
 	};
 	console.log(difference(obj1, obj2));
 	output: salary
+	
+Q21. Find the sum of amount 
+     const obj=[
+		{name: 'Abhi', amount: 50}, 
+		{name: 'Abhi2', amount: 150}, 
+		{name: 'Abhi', amount: 250}
+	 ]
+Ans:
+     Using function :
+		const findSum=(obj)=>{
+
+		let sum = 0;
+		obj.map((ele,index)=>{
+		  sum+=ele.amount
+		})
+
+		return sum;
+
+		}
+		findSum(obj);
+		console.log(findSum(obj))
+
+      Using Reduce :
+		var result = obj.reduce((a,b)=>(a +b.amount),0)
+		console.log(result)
 General question :
 Q1: How would you check if a number is an integer?
 Ans:
